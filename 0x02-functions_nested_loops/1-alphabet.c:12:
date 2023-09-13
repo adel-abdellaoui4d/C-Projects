@@ -1,0 +1,4 @@
+lphabet.c:12: WARNING: please, no spaces at the start of a line
+1-alphabet.c:13: ERROR: code indent should use tabs where possible
+1-alphabet.c:13: WARNING: please, no spaces at the start of a line
+total: 2 errors, 2 warnings, 17 lines checked
