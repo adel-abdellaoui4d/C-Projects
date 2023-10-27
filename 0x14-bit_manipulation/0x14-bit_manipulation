@@ -1,0 +1,25 @@
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * binary_to_uint - binary can be converted through unsigned int
+ * @b:  string that takes binary number or numbers
+ * Return: numbers that are coverted
+ */
+
+unsigned int binary_to_uint(const char *b)
+{
+        int vlx;
+        unsigned int adel = 0;
+
+        if (!b)
+                return (0);
+        for (vlx = 0; b[vlx]; vlx++)
+        {
+                if (b[vlx] < '0' || b[vlx] > '1')
+                        return (0);
+                adel = 2 * adel + (b[vlx] - '0');
+        }
+        return (adel);
+}
+
