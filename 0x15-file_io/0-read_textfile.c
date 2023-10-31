@@ -1,4 +1,4 @@
-#include "my_custom_header.h"
+#include "main.h"
 
 /**
  * read_textfile - reads a text file and prints the letters
@@ -7,31 +7,30 @@
  *
  * Return: numbers of letters printed. It fails, returns 0.
  */
-
-ssize_t my_custom_read_file(const char *file, size_t num_letters)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
-    int file_descriptor;
-    ssize_t bytes_read, bytes_written;
-    char *data_buffer;
+	int fd;
+	ssize_t nrd, nwr;
+	char *buf;
 
-    if (!file)
-        return (0);
+	if (!filename)
+		return (0);
 
-    file_descriptor = open(file, O_RDONLY);
+	fd = open(filename, O_RDONLY);
 
-    if (file_descriptor == -1)
-        return (0);
+	if (fd == -1)
+		return (0);
 
-    data_buffer = malloc(sizeof(char) * (num_letters));
-    if (!data_buffer)
-        return (0);
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
+		return (0);
 
-    bytes_read = read(file_descriptor, data_buffer, num_letters);
-    bytes_written = write(STDOUT_FILENO, data_buffer, bytes_read);
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
 
-    close(file_descriptor);
+	close(fd);
 
-    free(data_buffer);
+	free(buf);
 
-    return (bytes_written);
+	return (nwr);
 }
